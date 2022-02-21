@@ -13,6 +13,13 @@ class ToDoDetailTableViewController: UITableViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var noteView: UITextView!
+    @IBOutlet weak var reminderSwitch: UISwitch!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    let datePickerIndexPath = IndexPath(row: 1, section: 1)
+    let noteTextViewIndexPath = IndexPath(row: 0, section: 2)
+    let notesRowHeight: CGFloat = 200
+    let defaultRowHeight: CGFloat = 44
     
     var toDoItem: ToDoItem!
     
@@ -22,15 +29,23 @@ class ToDoDetailTableViewController: UITableViewController {
         
         
         if toDoItem == nil {
-            toDoItem =  ToDoItem(name: "", date: Date(), notes: "")
+            toDoItem = ToDoItem(name: "", date: Date(), notes: "", reminderSet: false)
         }
+        updateUserInterface()
+ 
+        
+        
+    }
+    
+    func updateUserInterface() {
         nameField.text = toDoItem.name
         datePicker.date = toDoItem.date
         noteView.text = toDoItem.notes
- 
+        reminderSwitch.isOn = toDoItem.reminderSet
+        dateLabel.textColor = (reminderSwitch.isOn ? .black : .gray)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        toDoItem = ToDoItem(name: nameField.text!, date: datePicker.date, notes: noteView.text)
+        toDoItem = ToDoItem(name: nameField.text!, date: datePicker.date, notes: noteView.text, reminderSet: reminderSwitch.isOn)
         
     }
 
@@ -43,4 +58,22 @@ class ToDoDetailTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func reminderSwitchChanged(_ sender: UISwitch) {
+        dateLabel.textColor = (reminderSwitch.isOn ? .black : .gray)
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+}
+
+extension ToDoDetailTableViewController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath {
+        case datePickerIndexPath:
+            return reminderSwitch.isOn ? datePicker.frame.height : 0
+        case noteTextViewIndexPath:
+            return notesRowHeight
+        default:
+            return defaultRowHeight
+        }
+    }
 }
