@@ -26,6 +26,22 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lfF-0s-j82" id="SFR-FN-cYS">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv7-Er-Uvm">
+                                                    <rect key="frame" x="74" y="11" width="320" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wmr-0T-LJ5">
+                                                    <rect key="frame" x="29" y="11" width="24" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="rectangle" catalog="system"/>
+                                                    <state key="selected" image="checkmark.rectangle" catalog="system"/>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="EPG-N7-XSX" kind="show" identifier="ShowDetail" id="v1j-hy-0KA"/>
@@ -62,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="57"/>
+            <point key="canvasLocation" x="547.82608695652175" y="56.919642857142854"/>
         </scene>
         <!--To Do Detail Table View Controller-->
         <scene sceneID="c59-yM-aOP">
@@ -235,6 +251,8 @@
         <segue reference="v1j-hy-0KA"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="checkmark.rectangle" catalog="system" width="128" height="93"/>
+        <image name="rectangle" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
