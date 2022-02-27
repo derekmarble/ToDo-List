@@ -15,10 +15,17 @@ protocol ListTableViewCellDelegate: class {
 
 class ListTableViewCell: UITableViewCell {
 
-    weak var delegate: ListTableViewCellDelegate?
-    
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    weak var delegate: ListTableViewCellDelegate?
+    
+    var toToItem: ToDoItem! {
+        didSet {
+            nameLabel.text = toToItem.name
+            checkBoxButton.isSelected = toToItem.completed
+        }
+    }
     
     @IBAction func checkToggled(_ sender: UIButton) {
         delegate?.checkBoxToggle(sender: self)
