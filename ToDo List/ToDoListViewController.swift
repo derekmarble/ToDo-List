@@ -32,7 +32,7 @@ class ToDoListViewController: UIViewController {
             self.tableView.reloadData()
         }
         
-        LocalNotificationManager.authorizeUserNotification()
+        LocalNotificationManager.authorizeUserNotification(viewController: self)
         
     }
     
